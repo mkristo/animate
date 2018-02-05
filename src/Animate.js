@@ -285,21 +285,23 @@ const Animate = React.createClass({
         if (!child.key) {
           throw new Error('must set key for <rc-animate> children');
         }
-        return (<AnimateChild
-          key={child.key}
-          ref={child.key}
-          animation={props.animation}
-          transitionName={props.transitionName}
-          transitionEnter={props.transitionEnter}
-          transitionAppear={props.transitionAppear}
-          transitionLeave={props.transitionLeave}>
-          {child}
-        </AnimateChild>);
+        return React.createElement(AnimateChild, 
+          {
+            key: child.key,
+            ref: child.key,
+            animation: props.animation,
+            transitionName: props.transitionName,
+            transitionEnter: props.transitionEnter,
+            transitionAppear: props.transitionAppear,
+            transitionLeave: props.transitionLeave
+          },
+          child
+        );
       });
     }
     const Component = props.component;
     if (Component) {
-      return <Component {...this.props}>{children}</Component>;
+      return React.createElement(Component, this.props, children);
     }
     return children[0] || null;
   },
