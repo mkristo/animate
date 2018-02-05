@@ -50,7 +50,9 @@
     "lint"
   ],
   "dependencies": {
-    "css-animation": "1.x",
+    "css-animation": "1.x"
+  },
+  "peerDependencies": {
     "react": "0.14.x",
     "react-dom": "0.14.x"
   }
